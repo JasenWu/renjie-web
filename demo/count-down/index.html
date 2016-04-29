@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>倒计时</title>
+	<style>
+	html,body,div{
+		margin: 0;
+		padding: 0;
+	}
+	#nowTime,#countDownTime{
+		margin: 10px auto;
+		width: 900px;
+		height: 60px;
+		background: #f0f000;
+		font-size: 28px;
+		line-height: 60px;
+		text-align: center;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="nowTime">现在的时间是： </div>
+<div id="countDownTime">倒计时：</div>
+
+<script>
+	var countDownTime = document.getElementById('countDownTime');
+
+	function zero(value){
+		return value<10 ? "0"+value : value; 
+	}
+	function countDown(){
+		var curTime = new Date();
+		// 把时间格式的字符变成标准的时间格式，对字符串的格式有要求是中间用“-”在IE6-IE8下不兼容，需要改成“/”
+		var tarTime = new Date("2015/8/3 22:00:00");//转换为标准日期格式
+		var spanCurTime = curTime.getTime(); //当前时间距离格林威治时间毫秒
+		var spanTarTime = tarTime.getTime(); //目标时间距离格林威治时间毫秒
+		var different = spanTarTime-spanCurTime;  //计算时间差
+		var hours = Math.floor(different/1000/60/60);
+		var difMinute = different-hours*1000*60*60;
+		var minutes = Math.floor(difMinute/1000/60);
+		var difSecond = difMinute-minutes*1000*60;
+		var seconds = Math.floor(difSecond/1000);
+		return zero(hours)+":"+zero(minutes)+":"+zero(seconds);
+	}
+	countDownTime.innerHTML += countDown();
+
+	 var timer1 = window.setInterval(function(){
+		//countDown();
+		countDownTime.innerHTML = "倒计时：" + countDown();
+	},1000);
+
+
+	/*
+	 *下面是Date日期应用常用的函数
+	 */
+	var nowTime = document.getElementById('nowTime');
+	function foamatDate(){
+		var curTime = new Date(); //Thu Jul 30 2015 10:59:47 GMT+0800 (中国标准时间)
+		var year = curTime.getFullYear();
+		var month = curTime.getMonth()+1; //0-11
+		var day = curTime.getDate();
+		var weekStr = "日一二三四五六";
+		var week = weekStr.charAt(curTime.getDay());//0-6 周日-周六
+		var hours = curTime.getHours();
+		var minutes = curTime.getMinutes();
+		var seconds = curTime.getSeconds();
+		var milliSeconds = curTime.getMilliseconds();
+		return year+"年"+zero(month)+"月"+zero(day)+"日 周"+week+" "+zero(hours)+"点"+zero(minutes)+"分"+zero(seconds)+"秒"+milliSeconds+"毫秒";
+	}
+	nowTime.innerHTML += foamatDate();
+	var timer2 = window.setInterval(function(){
+		nowTime.innerHTML ="现在的时间是： " + foamatDate();
+	},1000);
+
+</script>
+
+</body>
+</html>

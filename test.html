@@ -1,0 +1,21 @@
+<!dcotype html>
+<html>
+<head>
+    </head>
+    <body>
+    <a href="javascript:LaunchApp()">Launch the executable</a>
+    <a href="file://C:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe" 
+type="application/octet-stream">Launch Notepad</a>
+
+<script>
+function LaunchApp() {
+if (!document.all) {
+  alert ("Available only with Internet Explorer.");
+  return;
+}
+var ws = new ActiveXObject("WScript.Shell");
+ws.Exec("C:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe");
+}
+</script>
+    </body>
+    </html>

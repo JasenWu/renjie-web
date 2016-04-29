@@ -1,0 +1,59 @@
+@import "../bootstrap/less/bootstrap.less";
+
+/*myweb style*/
+
+.my-navbar {
+    background: @brand-primary;
+    .navbar-header a {
+        color: @gray-lighter;
+    }
+    .nav-main {
+        margin: 0;
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            a {
+                color: @gray-lighter;
+                padding: 0 25px;
+                line-height: 50px;
+            }
+        }
+        li.on{
+            background: darken(@brand-primary,10%);
+        }
+    }
+}
+
+.main {
+    padding: 20px;
+}
+
+.footer {
+    padding: 15px;
+    background: @gray-lighter;
+}
+.syntaxhighlighter {
+    border-radius:5px;
+    overflow:hidden;
+    padding: 15px;
+}
+
+// cool-effect-list page
+.cool-effect-list {
+    .list {
+       
+            border-bottom: 1px solid @gray-lighter;
+            padding:15px 0;
+            
+            
+       
+    }
+    .list-img{
+        border:1px solid @gray-lighter;
+    }
+}
+
+table.dataintable td.html5_new {
+        background: #EFEFEF url(/images/table_bg_html5.gif) top right no-repeat;
+}
